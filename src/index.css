@@ -13,3 +13,12 @@ a:hover{
 .services-list{
   list-style: initial;
 }
+
+.header-bg{
+  position:fixed;
+  height: 90px;
+  width: 100%;
+  top:0;
+  z-index: 1;
+ background-color: rgba(0,0,0,0.9);
+}

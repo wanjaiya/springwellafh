@@ -5,8 +5,6 @@ import {
     FaInstagram,
     FaTwitterSquare
 } from 'react-icons/fa';
-import { Form } from "react-router-dom";
-
 const Footer = () => {
 
     return (
