@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import lady from '../assets/lady.jpeg'
-import nurse from '../assets/nurse.jpg'
-import social from '../assets/social.jpg'
-import doctor from '../assets/doctor.jpg'
+import front  from '../assets/facility/front.jpeg'
+import living from '../assets/facility/living.jpeg'
+import entrance from '../assets/facility/entrance.jpeg'
+import dinning from '../assets/facility/dining.jpeg'
+import corridor from '../assets/facility/corridor.jpeg'
+import bed from '../assets/facility/bed.jpeg'
+import loo from '../assets/facility/loo.jpeg'
 // Data
 
 const Carousel = () => {
@@ -12,23 +15,39 @@ const Carousel = () => {
             {
                 "title": "Smiling Lady",
                 "link": "https://indieweb.social/@kendalmintcode",
-                "imageUrl": lady
+                "imageUrl": front
             },
             {
                 "title": "Doctor",
                 "link": "https://k-tech.systems",
-                "imageUrl": nurse
+                "imageUrl": living
             },
             {
                 "title": "Nurse",
                 "link": "https://indieweb.social/@kendalmintcode",
-                "imageUrl": social
+                "imageUrl": entrance
             },
 
             {
                 "title": "Care",
                 "link": "https://indieweb.social/@kendalmintcode",
-                "imageUrl": doctor
+                "imageUrl": dinning
+            },
+            {
+                "title": "Doctor",
+                "link": "https://k-tech.systems",
+                "imageUrl": corridor
+            },
+            {
+                "title": "Nurse",
+                "link": "https://indieweb.social/@kendalmintcode",
+                "imageUrl": bed
+            },
+
+            {
+                "title": "Care",
+                "link": "https://indieweb.social/@kendalmintcode",
+                "imageUrl": loo
             }
         ]
     }
@@ -80,13 +99,15 @@ const Carousel = () => {
     }, []);
 
     return (
+        <div  className='w-full bg-white py- px-4' >
+            <h1 className='md:text-3xl sm:text-2xl text-xl font-bold py-4 text-center underline pb-0'> Our state of the art facilities</h1>
         <div className="carousel w-full py-[3rem] px-4 justify-center">
-          
+            
             <div className="relative overflow-hidden ">
-                <div className="flex justify-between absolute top left w-full h-full">
+                <div className="flex justify-between absolute top left w-full ">
                     <button
                         onClick={movePrev}
-                        className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+                        className="hover:bg-blue-900/75 text-white w-10  text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
                         disabled={isDisabled('prev')}
                     >
                         <svg
@@ -137,7 +158,7 @@ const Carousel = () => {
                                 key={index}
                                 className="carousel-item text-center relative w-80 h-80 snap-start"
                             >
-                                <a href="#" className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-contain bg-no-repeat z-0"
+                                <button className="h-full w-full items-center bg-cover bg-no-repeat pt-8"
                                     style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
                                 >
                                     <img
@@ -145,7 +166,7 @@ const Carousel = () => {
                                         alt={resource.title}
                                         className="w-full aspect-square hidden"
                                     />
-                                </a>
+                                </button>
                                 {/* <a
                                     href="#"
                                     className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
@@ -159,7 +180,8 @@ const Carousel = () => {
                     })}
                 </div>
             </div>
-        </div>
+            </div>
+            </div>
     );
 };
 

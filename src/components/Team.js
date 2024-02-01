@@ -4,7 +4,7 @@ import avatar2 from '../assets/avatar2.jpg';
 
 const Team = () => {
     return (
-        <div name="team" className='w-full bg-white py-16 px-4' >
+        <div name="team" className='w-full bg-gray-100 py-16 px-4' >
             <h1 className='md:text-3xl sm:text-2xl text-xl font-bold py-2 text-center underline pb-[2rem]'> Meet the Team</h1>
             <div class="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-10 mt-[6rem] justify-center">
                 <div class="mb-24 md:mb-0 ">
