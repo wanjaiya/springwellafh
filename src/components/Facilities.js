@@ -156,9 +156,9 @@ const Carousel = () => {
                         return (
                             <div
                                 key={index}
-                                className="carousel-item text-center relative w-80 h-80 snap-start"
+                                className="carousel-item text-center relative w-96 h-[18rem]   snap-start"
                             >
-                                <button className="h-full w-full items-center bg-cover bg-no-repeat pt-8"
+                                <button className="w-full  items-center bg-contain bg-no-repeat pt-8"
                                     style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
                                 >
                                     <img
