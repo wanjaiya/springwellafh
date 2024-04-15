@@ -6,7 +6,12 @@ import dinning from '../assets/facility/dining.jpeg'
 import corridor from '../assets/facility/corridor.jpeg'
 import bed from '../assets/facility/bed.jpeg'
 import loo from '../assets/facility/loo.jpeg'
+import room1 from '../assets/facility/room1.jpeg'
+import room2 from '../assets/facility/room2.jpeg'
+import room3 from '../assets/facility/room3.jpeg'
 // Data
+import Carousels from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Carousel = () => {
 
@@ -43,6 +48,21 @@ const Carousel = () => {
                 "link": "https://indieweb.social/@kendalmintcode",
                 "imageUrl": bed
             },
+            {
+                "title": "Nurse",
+                "link": "https://indieweb.social/@kendalmintcode",
+                "imageUrl": room1
+            },
+            {
+                "title": "Nurse",
+                "link": "https://indieweb.social/@kendalmintcode",
+                "imageUrl": room2
+            },
+            {
+                "title": "Nurse",
+                "link": "https://indieweb.social/@kendalmintcode",
+                "imageUrl": room3
+            },
 
             {
                 "title": "Care",
@@ -52,129 +72,94 @@ const Carousel = () => {
         ]
     }
 
-
-    const maxScrollWidth = useRef(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carousel = useRef(null);
-
-    const movePrev = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex((prevState) => prevState - 1);
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1441 },
+            items: 4,
+            slidesToSlide: 4 // optional, default to 1.
+        },
+        laptop: {
+            breakpoint: { max: 1440, min: 1024 },
+            items: 3,
+            slidesToSlide: 3 // optional, default to 1.
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+            slidesToSlide: 2 // optional, default to 1.
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
         }
     };
 
-    const moveNext = () => {
-        if (
-            carousel.current !== null &&
-            carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
-        ) {
-            setCurrentIndex((prevState) => prevState + 1);
-        }
-    };
 
-    const isDisabled = (direction) => {
-        if (direction === 'prev') {
-            return currentIndex <= 0;
-        }
 
-        if (direction === 'next' && carousel.current !== null) {
-            return (
-                carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-            );
-        }
-
-        return false;
-    };
-
-    useEffect(() => {
-        if (carousel !== null && carousel.current !== null) {
-            carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
-        }
-    }, [currentIndex]);
-
-    useEffect(() => {
-        maxScrollWidth.current = carousel.current
-            ? carousel.current.scrollWidth - carousel.current.offsetWidth
-            : 0;
-    }, []);
+   
 
     return (
-        <div  className='w-full bg-white py- px-4' >
-            <h1 className='md:text-3xl sm:text-2xl text-xl font-bold py-4 text-center underline pb-0'> Our state of the art facilities</h1>
-        <div className="carousel w-full py-[3rem] px-4 justify-center">
-            
-            <div className="relative overflow-hidden ">
-                <div className="flex justify-between absolute top left w-full ">
-                    <button
-                        onClick={movePrev}
-                        className="hover:bg-blue-900/75 text-white w-10  text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                        disabled={isDisabled('prev')}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-12 w-20 -ml-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
+        <>
+            <div className='w-full bg-white py- px-4' >
+                <h1 className='md:text-3xl sm:text-2xl text-xl font-bold py-4 text-center underline pb-0'> Our state of the art facilities</h1>
+                <div className="carousel w-full py-[3rem] px-4 justify-center">
+
+                    <div className="relative overflow-hidden ">
+        <Carousels responsive={responsive}
+                swipeable={false}
+                draggable={false}
+                showDots={true}
+                ssr={true} // means to render carousel on server-side.
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={100000}
+                keyBoardControl={true}
+                customTransition="all .5"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                itemClass="carousel-item-padding-40-px"
+            >
+                {data.resources.map((resource, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className="carousel-item text-center relative h-[25rem]"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 19l-7-7 7-7"
-                            />
-                        </svg>
-                        <span className="sr-only">Prev</span>
-                    </button>
-                    <button
-                        onClick={moveNext}
-                        className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                        disabled={isDisabled('next')}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-12 w-20 -ml-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 5l7 7-7 7"
-                            />
-                        </svg>
-                        <span className="sr-only">Next</span>
-                    </button>
-                </div>
+                            <button className="w-full  items-center bg-cover bg-no-repeat pt-8"
+                                style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
+                            >
+                                <img
+                                    src={resource.imageUrl || ''}
+                                    alt={resource.title}
+                                    className="aspect-square hidden"
+                                />
+                            </button>
+                         
+                        </div>
+                    );
+                })}
+
+
+
+</Carousels>
+        
+        
+     
+        
                 <div
-                    ref={carousel}
+                   
                     className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
                 >
                     {data.resources.map((resource, index) => {
                         return (
                             <div
-                                key={index}
-                                className="carousel-item text-center relative w-96 h-[18rem]   snap-start"
+                             
+                                className="carousel-item text-center relative w-96 snap-start"
                             >
-                                <button className="w-full  items-center bg-contain bg-no-repeat pt-8"
-                                    style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
-                                >
-                                    <img
-                                        src={resource.imageUrl || ''}
-                                        alt={resource.title}
-                                        className="w-full aspect-square hidden"
-                                    />
-                                </button>
-                                {/* <a
-                                    href="#"
-                                    className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                                >
-                                    <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                                        {resource.title}
-                                    </h3>
-                                </a> */}
+                                
+                             
                             </div>
                         );
                     })}
@@ -182,6 +167,7 @@ const Carousel = () => {
             </div>
             </div>
             </div>
+        </>
     );
 };
 

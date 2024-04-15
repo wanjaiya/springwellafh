@@ -1,6 +1,6 @@
 import React from 'react'
-import avatar1 from '../assets/avatar1.jpg';
-import avatar2 from '../assets/avatar2.jpg';
+import avatar1 from '../assets/avatar1.jpeg';
+import avatar2 from '../assets/avatar2.jpeg';
 
 const Team = () => {
     return (
@@ -12,7 +12,7 @@ const Team = () => {
                         class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <div class="flex justify-center">
                             <div class="flex justify-center -mt-[75px]">
-                                <img src={avatar2}
+                                <img src={avatar1}
                                     class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
                             </div>
                         </div>
@@ -54,8 +54,8 @@ const Team = () => {
                         class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <div class="flex justify-center">
                             <div class="flex justify-center -mt-[75px]">
-                                <img src={avatar1}
-                                    class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
+                                <img src={avatar2}
+                                    class="mx-auto rounded-full shadow-lg dark:shadow-black/20 h-[200px] " alt="Avatar" />
                             </div>
                         </div>
                         <div class="p-6">
